@@ -4,5 +4,41 @@
 {% endblock %}
 
 {% block body %}
-<h1>This is Inside Body Block</h1>
+<div class="content">
+    <h1>TRAIL TO-DO LIST</h1>
+    <!-- if condition to print data if it exists -->
+    {% if tasks | length < 1 %}
+    <h3>Create a Task</h3>
+    {% else %}
+    <table>
+        <!-- Table Headers -->
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Action</th>
+        </tr>
+
+        <!-- using for loop to print each task -->
+        {% for task in tasks %}
+            <tr>
+                <td>{{task.content}}</td>
+                <td>{{task.created.strftime("%d-%m-%Y")}}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br/>
+                    <a href="/edit/{{task.id}}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <!-- for adding text box -->
+    <form action="/" method="POST">
+        <!-- to be able to enter text -->
+        <input type="text" name="content" id="content"/>
+        <!-- to clear the box if we hit submit -->
+        <input type="submit" value="Add Task" id="btn_add"/>        
+    </form>
+</div>
 {% endblock %}
