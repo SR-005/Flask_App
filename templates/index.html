@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
-    <title>My App</title>
-</head>
-<body>
-    <h1>Hello World</h1>
-    <p>How are you guys</p>
-</body>
-</html>
+{% extends 'base.html'%}
+{% block head %}
+<title>Title</title>
+{% endblock %}
+
+{% block body %}
+<h1>This is Inside Body Block</h1>
+{% endblock %}
